@@ -1,9 +1,11 @@
 import java.io.*;
+import java.nio.charset.Charset;
 
 public class KeyIn {
     String buf = null;                          //①　入力バッファの初期化
     BufferedReader br =                         //②　キーボード入力の準備
-            new BufferedReader(new InputStreamReader(System.in));
+            new BufferedReader(new InputStreamReader(System.in,
+                    Charset.forName(System.getProperty("native.encoding"))));
     
     /* 文字列を入力するメソッド */
     public String readString() {
@@ -17,7 +19,7 @@ public class KeyIn {
     }
 
     /* 入力プロンプトを表示して文字列を入力するメソッド */
-    public String reaString(String msg) {
+    public String readString(String msg) {
         System.out.print(msg + ">");            //⑤　プロンプト表示
         return readString();                    //⑥　キーボード入力
     }
