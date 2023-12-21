@@ -23,8 +23,16 @@ public class Sample9_2_1 {
                 System.out.println("性別の入力に誤りがあります");
             }
         }
-
-        age = Integer.parseInt(ki.readString("年齢を入力:"));   // ⑨
+//        age = Integer.parseInt(ki.readString("年齢を入力:"));   // ⑨
+        while (true) {
+            String buf = ki.readString("年齢を入力:");  //年齢を入力
+            try {
+                age = Integer.parseInt(buf);                //数値に変換
+                break;
+            } catch (NumberFormatException e) {             //例外処理
+                System.out.println("年齢の入力に誤りがあります:" + buf);
+            }
+        }
 
         System.out.print("氏名:" + lname + " " + fname +         // ⑩
                          "　性別:" + gender +
