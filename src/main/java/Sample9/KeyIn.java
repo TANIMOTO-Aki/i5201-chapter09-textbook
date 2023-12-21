@@ -23,6 +23,28 @@ public class KeyIn {
         System.out.print(msg + ">");            //⑤　プロンプト表示
         return readString();                    //⑥　キーボード入力
     }
+
+    /* 整数値を入力するメソッド */
+    public int readInt() {
+        int inputIntValue;
+        while (true) {
+        buf = readString();
+            try {
+                inputIntValue = Integer.parseInt(buf);  //数値に変換
+                break;                                  //ループ終了
+            } catch (NumberFormatException e) {
+                System.out.println("整数値を入力してください:" + buf);
+                System.out.print("再入力>");
+            }
+        }
+        return inputIntValue;                           //変換した値の返却
+    }
+
+    /* 入力プロンプトを表示して整数値を入力するメソッド */
+    public int readInt(String msg) {
+        System.out.print(msg + ">");                    //プロンプトの表示
+        return readInt();                               //readInt()の呼び出し
+    }
 }
 /*
  * 【プログラムの説明】
